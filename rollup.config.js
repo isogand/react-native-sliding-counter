@@ -40,7 +40,7 @@ export default [
                     "@babel/preset-typescript",
                 ],
             }),
-            PRODUCTION && terser(),
+            // PRODUCTION && terser(),
         ],
         external: external(),
         output: [
