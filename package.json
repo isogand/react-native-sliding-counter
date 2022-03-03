@@ -138,6 +138,9 @@
   "directories": {
     "lib": "lib"
   },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  },
   "dependencies": {
     "abab": "^2.0.5",
     "acorn": "^7.4.1",
@@ -318,7 +321,6 @@
     "fs-extra": "^10.0.1",
     "fs-mkdirp-stream": "^1.0.0",
     "fs.realpath": "^1.0.0",
-    "fsevents": "^2.3.2",
     "function-bind": "^1.1.1",
     "functional-red-black-tree": "^1.0.1",
     "gensync": "^1.0.0-beta.2",
