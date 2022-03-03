@@ -2,10 +2,10 @@
   "name": "@isogand/react-native-sliding-counter",
   "version": "1.0.0",
   "description": "Sliding Counter is a ...",
-  "main": "lib/sliding-counter.js",
+  "main": "lib/sliding-counter.es.js",
   "module": "lib/sliding-counter.es.js",
   "react-native": "lib/sliding-counter.es.js",
-  "types": "lib/yoohoo.d.ts",
+  "types": "lib/index.d.ts",
   "type": "module",
   "files": [
     "lib/**/*"

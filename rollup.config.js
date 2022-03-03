@@ -7,6 +7,7 @@ import pkg from "./package.json";
 import external from "@yelo/rollup-node-external";
 import {terser} from "rollup-plugin-terser";
 import babel from "@rollup/plugin-babel";
+import dts from "rollup-plugin-dts";
 
 const split = pkg.main.split("/");
 const fileName = split[split.length - 1].split(".")[0];
@@ -50,5 +51,10 @@ export default [
                 globals: [],
             },
         ],
+    },
+    {
+        input: "./lib/SlidingCounter.d.ts",
+        output: [{file: "lib/index.d.ts", format: "es"}],
+        plugins: [dts()],
     },
 ];

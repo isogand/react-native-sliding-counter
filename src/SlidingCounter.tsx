@@ -20,7 +20,8 @@ const clamp = (value: number, min: number, max: number) => {
     return Math.min(Math.max(value, min), max);
 };
 const BUTTON_WIDTH = 170;
-export default () => {
+
+export default function SlidingCounter(props: any) {
     const translateX = useSharedValue(0);
     const translateY = useSharedValue(0);
 
@@ -113,37 +114,35 @@ export default () => {
     });
 
     return (
-        <div>
-            <Animated.View style={[styles.button, rButtonStyle]}>
-                <Animated.View style={rPlusMinusIconStyle}>
-                    <AntDesign name="minus" color={"white"} size={ICON_SIZE} />
-                </Animated.View>
-
-                <Animated.View style={rCloseIconStyle}>
-                    <AntDesign name="close" color={"white"} size={ICON_SIZE} />
-                </Animated.View>
-
-                <Animated.View style={rPlusMinusIconStyle}>
-                    <AntDesign name="plus" color={"white"} size={ICON_SIZE} />
-                </Animated.View>
-
-                <View
-                    style={{
-                        ...StyleSheet.absoluteFillObject,
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <PanGestureHandler onGestureEvent={onPanGestureEvent}>
-                        <Animated.View style={[rStyle, styles.circle]}>
-                            <Text style={styles.text}>{count}</Text>
-                        </Animated.View>
-                    </PanGestureHandler>
-                </View>
+        <Animated.View style={[styles.button, rButtonStyle]}>
+            <Animated.View style={rPlusMinusIconStyle}>
+                <AntDesign name="minus" color={"white"} size={ICON_SIZE} />
             </Animated.View>
-        </div>
+
+            <Animated.View style={rCloseIconStyle}>
+                <AntDesign name="close" color={"white"} size={ICON_SIZE} />
+            </Animated.View>
+
+            <Animated.View style={rPlusMinusIconStyle}>
+                <AntDesign name="plus" color={"white"} size={ICON_SIZE} />
+            </Animated.View>
+
+            <View
+                style={{
+                    ...StyleSheet.absoluteFillObject,
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <PanGestureHandler onGestureEvent={onPanGestureEvent}>
+                    <Animated.View style={[rStyle, styles.circle]}>
+                        <Text style={styles.text}>{count}</Text>
+                    </Animated.View>
+                </PanGestureHandler>
+            </View>
+        </Animated.View>
     );
-};
+}
 
 const styles = StyleSheet.create({
     button: {
