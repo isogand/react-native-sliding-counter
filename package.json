@@ -1,0 +1,123 @@
+{
+    "name": "@isogand/react-native-sliding-counter",
+    "version": "1.0.0",
+    "description": "Sliding Counter is a ...",
+    "main": "lib/sliding-counter.js",
+    "module": "lib/sliding-counter.es.js",
+    "react-native": "lib/sliding-counter.es.js",
+    "types": "lib/yoohoo.d.ts",
+    "type": "module",
+    "files": [
+        "lib/**/*"
+    ],
+    "scripts": {
+        "test": "jest --config jest.config.json",
+        "build": "cross-env NODE_ENV=development rollup -c",
+        "build-production": "cross-env NODE_ENV=production rollup -c",
+        "watch": "yarn build --watch --watch.exclude=\"./lib/*\"",
+        "watch-production": "yarn build-production --watch.clearScreen --watch.exclude=\"./lib/*\"",
+        "yalc-watch": "nodemon -x 'yalc push'",
+        "yalc-push": "yalc push",
+        "format": "eslint \"**/*.{ts,js}\" --fix",
+        "lint": "eslint \"**/*.{ts,js}\"",
+        "preversion": "yarn lint",
+        "prepare": "yarn build-production",
+        "prepublishOnly": "cross-env npm test && yarn lint",
+        "version": "cross-env yarn format && git add -A src",
+        "postversion": "cross-env git push && git push --tags"
+    },
+    "keywords": [
+        "react-native",
+        "reaniamted2",
+        "counter",
+        "UI",
+        "UX"
+    ],
+    "author": "stevemoretz",
+    "license": "UNLICENSED",
+    "peerDependencies": {
+        "react": ">=0.14.0 <= 16",
+        "react-native": ">=0.64.3"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.38",
+        "@types/react-native": "^0.66.15",
+        "@rollup/plugin-commonjs": "^21.0.1",
+        "@rollup/plugin-node-resolve": "^13.1.1",
+        "@types/gulp": "^4.0.9",
+        "@types/jest": "^27.0.3",
+        "@typescript-eslint/eslint-plugin": "^5.7.0",
+        "@typescript-eslint/parser": "^5.7.0",
+        "@yelo/rollup-node-external": "^1.0.1",
+        "cross-env": "^7.0.3",
+        "eslint": "7.28.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-jest": "^25.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-webpack-plugin": "^3.1.1",
+        "globby": "11.0.4",
+        "gulp": "^4.0.2",
+        "jest": "^27.4.5",
+        "prettier": "^2.5.1",
+        "rollup": "^2.62.0",
+        "rollup-plugin-cleanup": "^3.2.1",
+        "rollup-plugin-dts": "^4.1.0",
+        "rollup-plugin-polyfill-node": "^0.8.0",
+        "rollup-plugin-sourcemaps": "^0.6.3",
+        "rollup-plugin-typescript2": "^0.31.1",
+        "ts-jest": "^27.1.2",
+        "tsc-alias": "^1.5.0",
+        "tslib": "^2.3.1",
+        "typescript": "^4.5.4",
+        "uglify-js": "^3.14.5"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "semi": true,
+        "bracketSpacing": false
+    },
+    "eslintConfig": {
+        "parserOptions": {
+            "ecmaVersion": 6,
+            "sourceType": "module"
+        },
+        "extends": [
+            "eslint:recommended",
+            "plugin:@typescript-eslint/recommended",
+            "plugin:prettier/recommended"
+        ],
+        "plugins": [
+            "@typescript-eslint",
+            "jest",
+            "prettier"
+        ],
+        "rules": {
+            "prettier/prettier": "warn",
+            "jest/no-disabled-tests": "warn",
+            "jest/no-focused-tests": "error",
+            "jest/no-identical-title": "error",
+            "jest/prefer-to-have-length": "warn",
+            "jest/valid-expect": "error",
+            "@typescript-eslint/ban-types": "warn",
+            "@typescript-eslint/no-explicit-any": "off",
+            "@typescript-eslint/ban-ts-comment": "off",
+            "@typescript-eslint/no-empty-function": "warn",
+            "no-unused-vars": "off",
+            "@typescript-eslint/no-unused-vars": [
+                "warn"
+            ]
+        },
+        "root": true,
+        "parser": "@typescript-eslint/parser",
+        "ignorePatterns": [
+            "node_modules",
+            "lib"
+        ],
+        "env": {
+            "browser": true,
+            "node": true,
+            "jasmine": true,
+            "jest/globals": true
+        }
+    }
+}

@@ -1,0 +1,7 @@
+node_modules
+/lib
+/coverage
+/.idea
+.yalc
+yalc.lock
+.DS_store

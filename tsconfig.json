@@ -1,0 +1,21 @@
+{
+    "ts-node": {
+        "compilerOptions": {
+            "module": "commonjs"
+        }
+    },
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es6",
+        "declaration": true,
+        "outDir": "./lib",
+        "strict": true,
+        "baseUrl": "./src",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "lib": ["WebWorker", "WebWorker.ImportScripts", "ES6"],
+        "importHelpers": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "**/__tests__/*"]
+}
