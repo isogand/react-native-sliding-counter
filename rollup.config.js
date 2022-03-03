@@ -13,10 +13,11 @@ const split = pkg.main.split("/");
 const fileName = split[split.length - 1].split(".")[0];
 
 const PRODUCTION =
-    process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
+  process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
 
 export default [
     {
+        watch: true,
         input: `src/SlidingCounter.tsx`,
         plugins: [
             nodeResolve(),

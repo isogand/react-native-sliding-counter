@@ -32,7 +32,7 @@ export default function SlidingCounter(props: any) {
         setCount((currentCount) => currentCount + 1);
     }, []);
     const decrementCount = useCallback(() => {
-        setCount((currentCount) => currentCount - 1);
+        setCount((currentCount) => currentCount - 2);
     }, []);
     const resetCount = useCallback(() => {
         setCount(0);
