@@ -3,35 +3,16 @@ import nodePolyfills from "rollup-plugin-polyfill-node";
 import sourcemaps from "rollup-plugin-sourcemaps";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
-import fs from "fs/promises";
-import globby from "globby";
 import pkg from "./package.json";
-import UglifyJS from "uglify-js";
 import external from "@yelo/rollup-node-external";
-import path from "path";
+import {terser} from "rollup-plugin-terser";
+import babel from "@rollup/plugin-babel";
 
-const __path = path;
 const split = pkg.main.split("/");
 const fileName = split[split.length - 1].split(".")[0];
 
-const minify = () => {
-    return {
-        name: "minify",
-        buildEnd: async () => {
-            if (!PRODUCTION) {
-                return;
-            }
-            const files = await globby(`lib/**/*.js`);
-            for (const path1 of files) {
-                await fs.writeFile(
-                    path1,
-                    UglifyJS.minify(await fs.readFile(path1, "utf8")).code,
-                    "utf8"
-                );
-            }
-        },
-    };
-};
+const PRODUCTION =
+    process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
 
 export default [
     {
@@ -49,7 +30,16 @@ export default [
                     },
                 },
             }),
-            minify,
+            babel({
+                babelrc: true,
+                extensions: [".js", ".ts", ".tsx"],
+                presets: [
+                    "@babel/preset-env",
+                    "@babel/preset-react",
+                    "@babel/preset-typescript",
+                ],
+            }),
+            PRODUCTION && terser(),
         ],
         external: external(),
         output: [
@@ -60,5 +50,5 @@ export default [
                 globals: [],
             },
         ],
-    }
+    },
 ];

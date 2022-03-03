@@ -1,10 +1,6 @@
 {
-    "ts-node": {
-        "compilerOptions": {
-            "module": "commonjs"
-        }
-    },
     "compilerOptions": {
+        "jsx" : "react-native",
         "target": "es5",
         "module": "es6",
         "declaration": true,
@@ -13,7 +9,7 @@
         "baseUrl": "./src",
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "lib": ["WebWorker", "WebWorker.ImportScripts", "ES6"],
+        "lib": ["ES6"],
         "importHelpers": true
     },
     "include": ["src"],
