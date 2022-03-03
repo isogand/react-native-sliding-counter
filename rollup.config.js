@@ -56,5 +56,6 @@ export default [
         input: "./lib/SlidingCounter.d.ts",
         output: [{file: "lib/index.d.ts", format: "es"}],
         plugins: [dts()],
+        watch: true,
     },
 ];
