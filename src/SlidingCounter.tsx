@@ -1,5 +1,5 @@
 import {AntDesign} from "@expo/vector-icons";
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {StyleSheet, Text, View} from "react-native";
 import {
     PanGestureHandler,
@@ -21,18 +21,41 @@ const clamp = (value: number, min: number, max: number) => {
 };
 const BUTTON_WIDTH = 170;
 
-export default function SlidingCounter(props: any) {
+type Props = {
+    min?: number;
+    max?: number;
+    value?: number;
+    onValueChanged?: (value: number) => void;
+};
+
+export default function SlidingCounter({
+    min = -Infinity,
+    max = Infinity,
+    value = 0,
+    onValueChanged,
+}: Props) {
     const translateX = useSharedValue(0);
     const translateY = useSharedValue(0);
 
-    const [count, setCount] = useState(0);
+    const applyLimits = (v: number) => Math.max(min, Math.min(max, v));
+    const [count, setCount] = useState(applyLimits(value));
     const MAX_SLIDE_OFFSET = BUTTON_WIDTH * 0.3;
+
+    useEffect(() => {
+        if (onValueChanged) {
+            onValueChanged(count);
+        }
+    }, [count]);
+
+    useEffect(() => {
+        setCount(applyLimits(value));
+    }, [value]);
 
     const incrementCount = useCallback(() => {
         setCount((currentCount) => currentCount + 1);
     }, []);
     const decrementCount = useCallback(() => {
-        setCount((currentCount) => currentCount - 2);
+        setCount((currentCount) => currentCount - 1);
     }, []);
     const resetCount = useCallback(() => {
         setCount(0);
@@ -43,13 +66,13 @@ export default function SlidingCounter(props: any) {
             onActive: (event) => {
                 translateX.value = clamp(
                     event.translationX,
-                    -MAX_SLIDE_OFFSET,
-                    MAX_SLIDE_OFFSET
+                    min === count ? 0 : -MAX_SLIDE_OFFSET,
+                    max === count ? 0 : MAX_SLIDE_OFFSET
                 );
                 translateY.value = clamp(
                     event.translationY,
                     0,
-                    MAX_SLIDE_OFFSET
+                    0 !== count ? MAX_SLIDE_OFFSET : 0
                 );
             },
             onEnd: () => {
