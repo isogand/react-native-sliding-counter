@@ -13,12 +13,11 @@ const split = pkg.main.split("/");
 const fileName = split[split.length - 1].split(".")[0];
 
 const PRODUCTION =
-  process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
+    process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
 
 export default [
     {
-        watch: true,
-        input: `src/SlidingCounter.tsx`,
+        input: `src/main.ts`,
         plugins: [
             nodeResolve(),
             nodePolyfills(),
@@ -54,7 +53,7 @@ export default [
         ],
     },
     {
-        input: "./lib/SlidingCounter.d.ts",
+        input: "./lib/main.d.ts",
         output: [{file: "lib/index.d.ts", format: "es"}],
         plugins: [dts()],
         watch: true,
