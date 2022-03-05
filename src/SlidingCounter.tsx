@@ -12,7 +12,6 @@ import {
 import Animated, {
     interpolate,
     runOnJS,
-    SharedValue,
     useAnimatedGestureHandler,
     useAnimatedStyle,
     useSharedValue,

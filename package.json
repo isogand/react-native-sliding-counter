@@ -1,6 +1,6 @@
 {
   "name": "@isogand/react-native-sliding-counter",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Sliding Counter is a ...",
   "main": "lib/sliding-counter.es.js",
   "module": "lib/sliding-counter.es.js",
@@ -16,7 +16,7 @@
     "build-production": "cross-env NODE_ENV=production rollup -c",
     "watch": "yarn build --watch --watch.exclude=\"./lib/*\"",
     "watch-production": "yarn build-production --watch.clearScreen --watch.exclude=\"./lib/*\"",
-    "yalc-watch" : "concurrently --kill-others \"yarn watch\" \"nodemon -x 'yalc push'\"",
+    "yalc-watch": "concurrently --kill-others \"yarn watch\" \"nodemon -x 'yalc push'\"",
     "yalc-push": "yalc push",
     "format": "eslint \"**/*.{ts,js}\" --fix",
     "lint": "eslint \"**/*.{ts,js}\"",
