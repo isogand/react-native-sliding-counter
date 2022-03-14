@@ -6,7 +6,7 @@
 <h1> A demo <h1>
  </br>
 
-![](https://raw.githubusercontent.com/isogand/Bike-Inertia/main/public/image/demo.gif)</div>
+![](https://raw.githubusercontent.com/isogand/react-native-sliding-counter/public/image/demo.gif)</div>
 
 This library provides...
 
