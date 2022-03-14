@@ -2,10 +2,11 @@
 
 ## Introduction
 
+<div>
 <h1> A demo <h1>
  </br>
 
-![](https://raw.githubusercontent.com/isogand/Bike-Inertia/main/public/image/demo.gif)
+![](https://raw.githubusercontent.com/isogand/Bike-Inertia/main/public/image/demo.gif)</div>
 
 This library provides...
 
