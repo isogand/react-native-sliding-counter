@@ -6,7 +6,7 @@
 <h1> A demo <h1>
  </br>
 
-![](https://raw.githubusercontent.com/isogand/react-native-sliding-counter/public/image/demo.gif)</div>
+![](https://github.com/isogand/react-native-sliding-counter/blob/master/public/image/demo.gif)</div>
 
 This library provides...
 
