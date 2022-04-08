@@ -178,12 +178,17 @@ export default function SlidingCounter({
 
     useEffect(() => {
         if (onValueChanged) {
-            onValueChanged(count);
+            if (count !== value) {
+                onValueChanged(count);
+            }
         }
     }, [count]);
 
     useEffect(() => {
-        setCount(applyLimits(value));
+        const result = applyLimits(value);
+        if (result !== count) {
+            setCount(result);
+        }
     }, [value]);
 
     const incrementCount = useCallback(() => {
