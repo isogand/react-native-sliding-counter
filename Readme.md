@@ -39,9 +39,19 @@ npm install @isogand/react-native-sliding-counter
   export default function App() {
       return (
         <GestureHandlerRootView style={{flex:1}}>
-          <SlidingCounter / >
+          <View style={styles.container}>
+            <SlidingCounter / >
+          </View>
         </GestureHandlerRootView>
       );
   }
+ const styles = StyleSheet.create({
+   container: {
+        flex: 1,
+        backgroundColor: '#656565',
+        alignItems: 'center',
+        justifyContent: 'center',
+  },
+});
  ```
 
