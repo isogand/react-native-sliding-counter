@@ -1,6 +1,6 @@
 # React Native Sliding Counter
 
-## Introduction
+<!-- ## Introduction -->
 
 <div>
 <h1> A demo <h1>
