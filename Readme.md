@@ -3,7 +3,7 @@
 <!-- ## Introduction -->
 
 <div>
-<h1> A demo <h1>
+<h3> A demo <h1>
  </br>
 
 ![](https://github.com/isogand/react-native-sliding-counter/blob/master/public/image/demo.gif)</div>
