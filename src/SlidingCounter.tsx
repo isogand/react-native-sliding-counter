@@ -19,6 +19,7 @@ import Animated, {
     withTiming,
 } from "react-native-reanimated";
 import {CLAMP_SIDE} from "./main";
+import {I18nManager} from "react-native";
 
 const clamp = (value: number, min: number, max: number) => {
     "worklet";
@@ -147,6 +148,7 @@ export default function SlidingCounter({
     iconStyleWrapper,
     onHandlerLongTap,
 }: Props) {
+    const isRtl = I18nManager.isRTL;
     const panRef = useRef();
     const tapPlusRef = useRef();
     const tapMinusRef = useRef();
@@ -154,6 +156,9 @@ export default function SlidingCounter({
 
     const translateX = useSharedValue(0);
     const translateY = useSharedValue(0);
+
+    max = Math.max(max, 0);
+    min = Math.max(min, 0);
 
     const applyLimits = (v: number) => Math.max(min, Math.min(max, v));
     const [count, setCount] = useState(applyLimits(value));
@@ -217,19 +222,23 @@ export default function SlidingCounter({
                 );
 
                 let yClampMin = -MAX_SLIDE_OFFSET;
-                if (clampSide === CLAMP_SIDE.START) {
+                if (clampSide === CLAMP_SIDE.START || count === 0) {
                     yClampMin = 0;
                 }
                 let yClampMax = MAX_SLIDE_OFFSET;
-                if (clampSide === CLAMP_SIDE.END) {
+                if (clampSide === CLAMP_SIDE.END || count === 0) {
                     yClampMax = 0;
                 }
 
-                Y.value = clamp(
-                    vertical ? event.translationX : event.translationY,
-                    yClampMin,
-                    yClampMax
-                );
+                Y.value =
+                    (isRtl ? -1 : 1) *
+                    clamp(
+                        vertical
+                            ? (isRtl ? -1 : 1) * event.translationX
+                            : event.translationY,
+                        yClampMin,
+                        yClampMax
+                    );
             },
             onEnd: () => {
                 const X = vertical ? translateY : translateX;
